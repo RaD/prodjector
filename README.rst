@@ -36,7 +36,10 @@ Now you're ready to configure the project. Do::
 
   python fabfile/configure.py cfgs/<YOUR_CONFIG_FILE>
 
-This will create ``src/settings.py`` and ``fabfile/hosts.py`` files.
+This will create ``src/settings.py`` and ``fabfile/hosts.py``
+files. Also the ``onfiguration.py`` file (the copy of your
+configuration file) will be created and will be used by ``fabfiles/*``
+scripts.
 
 Deployment
 ----------
