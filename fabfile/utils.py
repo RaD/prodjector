@@ -4,7 +4,7 @@ import os
 from fabric.api import env, run, local, put
 from fabric.contrib.files import append as append_line
 from fab_deploy import utils
-from .configuration import CONFIG
+from configuration import CONFIG
 
 def setup_key_auth(no_password=True):
     u"""

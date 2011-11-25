@@ -10,7 +10,7 @@ def make_config(file_name):
             dst.close()
         src.close()
 
-def configure(name):
+def configure(name, change_settings=False):
     u"""
     Create settings.py using passed parameter.
     """
@@ -22,12 +22,15 @@ def configure(name):
     from string import Template
 
     print '\tCreate src/settings.py'
-    with open('./tpls/settings.template', 'r') as src:
-        with open('./src/settings.py', 'w') as dst:
-            template = Template(src.read())
-            dst.write(template.substitute(CONFIG))
-            dst.close()
-        src.close()
+    if change_settings:
+        with open('./tpls/settings.template', 'r') as src:
+            with open('./src/settings.py', 'w') as dst:
+                template = Template(src.read())
+                dst.write(template.substitute(CONFIG))
+                dst.close()
+            src.close()
+    else:
+        print '\t...skip.'
 
     print '\tCreate fabfile/hosts.py'
     with open('./tpls/hosts.template', 'r') as src:

@@ -8,7 +8,7 @@ from .supervisord import supervisorctl
 TYPE = 'DATABASE'
 NAME = 'Redis'
 APT = []
-PIP = ['redis',]
+PIP = ['redis==2.4.10',]
 
 def deploy():
     u"""
