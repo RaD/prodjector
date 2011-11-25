@@ -52,7 +52,7 @@ where
 
 * ``virtualbox`` -- target host description (see ``hosts.template``);
 * ``autodiscover`` -- check the dependency information from fabric
-plugins (see ``fabfile/`` directory).
+  plugins (see ``fabfile/`` directory).
 
 Usage
 -----
