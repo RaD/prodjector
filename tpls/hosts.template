@@ -1,0 +1,13 @@
+# -*- coding: utf-8 -*-
+
+from fab_deploy import utils
+
+COMMON_OPTIONS = dict(
+    DB_USER = '${DB_USER}',
+)
+
+@utils.define_host('${VIRTUALBOX}')
+def virtualbox():
+    options = COMMON_OPTIONS.copy()
+    options.update(DB_PASSWORD = '${DB_PASSWORD}')
+    return options

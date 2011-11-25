@@ -1,0 +1,11 @@
+env/
+src/
+
+caches/
+
+*.pyc
+*~
+
+configuration.py
+fabfile/hosts.py
+

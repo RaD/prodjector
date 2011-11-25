@@ -1,0 +1,8 @@
+###
+# These packages are required for development environment.
+###
+
+Fabric >= 1.3.2
+django-fab-deploy == 0.7.2
+docutils >= 0.7
+sphinx >= 1.0
