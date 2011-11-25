@@ -3,6 +3,8 @@ ProDJector
 
 This is simple skeleton for Django powered project.
 
+Tested with Debian Squeeze 6.0.3.
+
 Initialization
 --------------
 
@@ -14,7 +16,7 @@ It does the following:
 
 * create virtual environment;
 * create cache directories;
-* install python packeges for dev environment;
+* install python packages for dev environment;
 * create directory for your sources.
 
 Fill the ``src`` directory with your source code. I do this with
@@ -41,7 +43,19 @@ Deployment
 
 Now you can deploy your project::
 
-  fab autodiscover deploy
+  fab virtualbox autodiscover deploy
 
-where ``autodiscover`` -- check the dependency information from fabric
+where
+
+* ``virtualbox`` -- target host description (see ``hosts.template``);
+* ``autodiscover`` -- check the dependency information from fabric
 plugins (see ``fabfile/`` directory).
+
+Usage
+-----
+
+After installation your project you can download APT and PIP caches::
+
+  fab virtualbox sync_back
+
+The ``deploy`` statement is using these cached files by default.
