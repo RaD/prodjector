@@ -1,0 +1,35 @@
+[program:celery-io]
+priority = 600
+command = {{ ENV_DIR }}/bin/python {{ PROJECT_DIR }}/manage.py celeryd -c3 -Q io -E -n c-io -l info
+stderr_logfile = {{ ENV_DIR }}/var/log/supervisord-celery-io.error.log
+stdout_logfile = {{ ENV_DIR }}/var/log/supervisord-celery-io.log
+startsecs = 5
+startretries = 60
+autorestart = true
+
+[program:celery-processes]
+priority = 600
+command = {{ ENV_DIR }}/bin/python {{ PROJECT_DIR }}/manage.py celeryd -c2 -E -n c-proc -l info
+stderr_logfile = {{ ENV_DIR }}/var/log/supervisord-celery-proc.error.log
+stdout_logfile = {{ ENV_DIR }}/var/log/supervisord-celery-proc.log
+startsecs = 5
+startretries = 60
+autorestart = true
+
+[program:celerybeat]
+priority = 610
+command = {{ ENV_DIR }}/bin/python {{ PROJECT_DIR }}/manage.py celerybeat -s {{ ENV_DIR }}/var/run/celerybeat-schedule-{{ INSTANCE_NAME }}
+stderr_logfile = {{ ENV_DIR }}/var/log/supervisord-celerybeat.error.log
+stdout_logfile = {{ ENV_DIR }}/var/log/supervisord-celerybeat.log
+startsecs = 5
+startretries = 60
+autorestart = true
+
+[program:celerycam]
+priority = 590
+command = {{ ENV_DIR }}/bin/python {{ PROJECT_DIR }}/manage.py celerycam
+stderr_logfile = {{ ENV_DIR }}/var/log/supervisord-celerycam.error.log
+stdout_logfile = {{ ENV_DIR }}/var/log/supervisord-celerycam.log
+startsecs = 5
+startretries = 60
+autorestart = true

@@ -1,0 +1,6 @@
+[program:redis]
+command = {{ ENV_DIR }}/bin/redis-server {{ ENV_DIR }}/etc/redis.conf
+stderr_logfile = {{ ENV_DIR }}/var/log/redis.error.log
+stdout_logfile = {{ ENV_DIR }}/var/log/redis.log
+priority=100
+startretries = 60

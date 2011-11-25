@@ -1,0 +1,15 @@
+[unix_http_server]
+file=/tmp/supervisor-{{ INSTANCE_NAME }}.sock   ; (the path to the socket file)
+
+[supervisord]
+logfile={{ PROJECT_DIR }}/files/logs/supervisord.log
+pidfile={{ ENV_DIR }}/var/run/supervisord-{{ INSTANCE_NAME }}.pid
+
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
+
+[supervisorctl]
+serverurl=unix:///tmp/supervisor-{{ INSTANCE_NAME }}.sock
+
+[include]
+files = {{ ENV_DIR }}/etc/supervisord/*.ini
