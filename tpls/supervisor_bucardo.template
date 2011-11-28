@@ -1,0 +1,6 @@
+[program:bucardo]
+command = bucardo_ctl
+stderr_logfile = {{ ENV_DIR }}/var/log/bucardo.error.log
+stdout_logfile = {{ ENV_DIR }}/var/log/bucardo.log
+priority=100
+startretries = 60
