@@ -1,0 +1,24 @@
+log_level 4
+log_file /var/log/munin/munin-node.log
+pid_file /var/run/munin/munin-node.pid
+
+background 1
+setsid 1
+
+user root
+group root
+
+ignore_file ~$
+#ignore_file [#~]$  # FIX doesn't work. '#' starts a comment
+ignore_file DEADJOE$
+ignore_file \.bak$
+ignore_file %$
+ignore_file \.dpkg-(tmp|new|old|dist)$
+ignore_file \.pod$
+
+host_name {{ SERVER_NAME }}
+
+cidr_allow {{ MUNIN_CIDR_ALLOW }}
+host {{ MUNIN_NODES.0 }}
+port 4949
+

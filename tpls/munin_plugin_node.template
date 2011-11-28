@@ -1,0 +1,24 @@
+[apache_*]
+env.ports {{ APACHE_PORT }}
+
+[df]
+env.exclude none unknown iso9660 squashfs udf romfs ramfs debugfs tmpfs udev
+
+[exim_mailqueue]
+group adm, (Debian-exim)
+
+[exim_mailstats]
+group adm, (Debian-exim)
+
+[if_*]
+user root
+
+[munin_stats]
+user munin
+group munin
+
+[nginx_*]
+env.url http://localhost/nginx_status
+
+[postgres_*]
+user postgres
