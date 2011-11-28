@@ -2,7 +2,7 @@
 
 from .caches import apt_cache_prepare, pip_cache_prepare, other_cache_prepare
 from .utils import CONFIG, setup_key_auth, pip_install, sync_back
-from .hosts import virtualbox
+from .postgres import setup as pgsetup
 
 from fabric.api import settings, local, put
 from fab_deploy import system, utils, virtualenv
@@ -50,6 +50,22 @@ def deploy(install_key='yes', no_password='yes', fill_cache='yes', use_cache='ye
     print '''Run 'python manage.py createsuperuser'.'''
     print '=-='*20
 
+def deploy_plugin(name, priority):
+    u"""
+    Функция для развёртывания указанного плагина.
+    """
+    print deploy_plugin.__doc__
+    autodiscover()
+
+    print PACKAGES
+
+    if priority not in PRIORITY:
+        raise RuntimeError(u'Wrong PRIORITY!')
+    for action in ('deploy', 'setup', 'final'):
+        module = PACKAGES[priority][name]
+        if hasattr(module, action):
+            getattr(module, action)()
+
 def autodiscover():
     u"""
     Функция получения информации о пакетах.
@@ -61,7 +77,7 @@ def autodiscover():
     if not prodjector:
         raise(u'Define PRODJECTOR section in the configuration file.')
 
-    for name in prodjector.get('COMPONENTS', ()):
+    for name in prodjector.get('PLUGINS', ()):
         module = getattr(__import__('fabfile.%s' % name), name)
         APT += module.APT
         PIP += module.PIP
