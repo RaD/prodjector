@@ -2,6 +2,7 @@
 
 from .caches import apt_cache_prepare, pip_cache_prepare, other_cache_prepare
 from .utils import CONFIG, setup_key_auth, pip_install, sync_back
+from .hosts import virtualbox
 from .postgres import setup as pgsetup
 
 from fabric.api import settings, local, put

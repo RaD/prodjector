@@ -4,10 +4,14 @@ from fab_deploy import utils
 
 COMMON_OPTIONS = dict(
     DB_USER = '${DB_USER}',
+    SERVER_NAME = '${SERVER_NAME}'
 )
 
 @utils.define_host('${VIRTUALBOX}')
 def virtualbox():
     options = COMMON_OPTIONS.copy()
-    options.update(DB_PASSWORD = '${DB_PASSWORD}')
+    options.update(DB_PASSWORD = '${DB_PASSWORD}',
+                   MUNIN_NODES = ${MUNIN_NODES},
+                   MUNIN_CIDR_ALLOW = '${MUNIN_CIDR_ALLOW}'
+                   )
     return options

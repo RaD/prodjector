@@ -7,6 +7,9 @@ CONFIG = {
     'VIRTUALBOX': 'zina@localhost:9022',
     'CACHE_PATH_LOCAL': './caches',
     'CACHE_PATH_REMOTE': '/tmp',
+    'SERVER_NAME': 'ya.ru',
+    'MUNIN_HOST': '127.0.0.1',
+    'MUNIN_CIDR_ALLOW': '127.0.0.1/32',
     'ADMINS': (
         ('Ruslan Popov', '<ruslan@zina.ru>'),
         ),
